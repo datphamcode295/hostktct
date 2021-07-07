@@ -2,6 +2,9 @@ import { directive } from '@babel/types';
 import React, { Component } from 'react';
 import firebase from '../../database/firebase';
 import Question from './question';
+import CountDown from './countdown';
+
+
 
 class Questions extends Component {
     constructor(props){
@@ -44,6 +47,7 @@ class Questions extends Component {
         //console.log(this.state.listQuestion[0])
         return(<div>
             {this.state.listQuestion[id]?<Question >{this.state.listQuestion[id]}</Question>:<span>loading...</span>}
+            <CountDown time={2} new={this.state.id}></CountDown>
             <button id="0" onClick={handleClick}>1</button>
             <button id="1" onClick={handleClick}>2</button>
             <button id="2" onClick={handleClick}>3</button>

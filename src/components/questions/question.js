@@ -1,13 +1,15 @@
-import React from 'react';
-import CountDown from './countdown';
+import React, { useEffect, useState } from 'react';
 
 function Question (props){
     //console.log(props);
+    let [question, setQuestion] = useState(props.children.question);
+    useEffect(()=>{
+        setQuestion(props.children.question)
+    },[props])
+
     return (
         <div> 
-            {props.children.question}
-            <CountDown time={2}></CountDown>
-        
+            {question}
         </div>
     )
 }
