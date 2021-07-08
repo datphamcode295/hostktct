@@ -26,7 +26,8 @@ class StudentAnswers extends Component{
                 temp=[...temp, {
                     name : doc.data().name,
                     answer : doc.data().answer,
-                    id : doc.id
+                    id : doc.id,
+                    score : doc.data().score
 
                 }]
             });
@@ -66,9 +67,9 @@ class StudentAnswers extends Component{
                     <div id="answerlist">
                         {
                             this.state.listAnswer.map((e)=>
-                                <div>
+                                <div key={e.name}>
                                 <StudentAnswer name={e.name} answer={e.answer} key={e.id}></StudentAnswer>
-                                <AddButton></AddButton>
+                                <AddButton name={e.id} score={e.score}></AddButton>
                                 </div>
                             )
                         }

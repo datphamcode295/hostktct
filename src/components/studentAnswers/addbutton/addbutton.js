@@ -1,30 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './addbutton.scss'
 
 function AddButton(props){
+    
+    const [idStudent, setIdStudent] = useState(props.name);
+    const [score, setScore] = useState(props.score);
     const preventIt = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        event.checked=!event.checked;
+        console.log(event.target.attributes.name.nodeValue);
 
-        //I am here
-        return false;
+        console.log(event.target.attributes.name.nodeValue);
+        const checkbox = '#a'+ event.target.attributes.name.nodeValue;
+        const checkedBox = document.querySelector(checkbox);
+        console.log(checkedBox);
+        checkedBox.checked=!checkedBox.checked;
+       
+    };
+    const preventALink = (e)=>{
+        e.preventDefault();
+
+
     };
 
     return(
         <div>
-        <nav class="menu">
-        <input type="checkbox" href="#" class="menu-open" name="menu-open" id={props.name} onClick={preventIt}/>
-        <label class="menu-open-button" for="menu-open">
-            <span class="hamburger hamburger-1"></span>
-            <span class="hamburger hamburger-2"></span>
-            <span class="hamburger hamburger-3"></span>
+        <nav className="menu">
+        <input type="checkbox" href="#"   className="menu-open" name="menu-open" id={'a'+props.name}  />
+        <label className="menu-open-button" htmlFor="menu-open" onClick={preventIt} name={props.name}>
+            +
         </label>
         
-        <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
+        <a href="#" onClick={preventALink} className="menu-item"> 1 </a>
         
-        <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
-        <a href="#" class="menu-item"> <i class="fa fa-envelope"></i> </a>
+        <a href="#" onClick={preventALink}  className="menu-item"> 2 </a>
+        <a href="#" onClick={preventALink} className="menu-item"> 3 </a>
         
         
         </nav>

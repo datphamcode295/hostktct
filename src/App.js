@@ -24,12 +24,24 @@ class App extends Component {
     db.collection("show").doc("state")
     .onSnapshot((doc) => {
         //console.log("Current data: ", doc.data());
-        this.setState({
-          start: doc.data().start, 
-          question: doc.data().question, 
-          showScore: doc.data().showScore,
-          studentAnswers: doc.data().studentAnswers});
-        //console.log("props ", this.state.question, this.state.start, this.state.showScore)
+        if(doc.data().start!=this.state.start)
+          this.setState({start: doc.data().start});
+        if(doc.data().question!=this.state.question)
+        {
+          console.log("a");
+          this.setState({question: doc.data().question});
+        }
+        if(doc.data().showScore!=this.state.showScore)
+          this.setState({showScore: doc.data().showScore});
+        if(doc.data().studentAnswers!=this.state.studentAnswers)
+          this.setState({studentAnswers: doc.data().studentAnswers});
+        
+    //     this.setState({
+    //       start: doc.data().start, 
+    //       question: doc.data().question, 
+    //       showScore: doc.data().showScore,
+    //       studentAnswers: doc.data().studentAnswers});
+    //     //console.log("props ", this.state.question, this.state.start, this.state.showScore)
     });
   }
   render() {
